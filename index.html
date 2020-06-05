@@ -9,6 +9,12 @@
 <body>
     <div id="app">
         <h1>{{ message }}</h1>
+        <h1>{{ age * 2 }}</h1>
+        <h1>{{ age > 60 ? 'Old' : 'Young'}}</h1>
+        <h1>{{name.split(' ')[1]}}</h1>
+        <h1>{{ getFullName() }}</h1>
+        <h1>{{ getFullNameTwoMethod(firstName, lastName) }}</h1>
+        <h1>{{ getFullNameThreeMethod(firstName, lastName).name }}</h1>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -16,7 +22,25 @@
     new Vue({
         el: "#app",
         data: {
-            message: "Hello World"
+            message: "Hello World",
+            age: 27,
+            name: 'Bo Andresen',
+            firstName: 'Bo',
+            lastName: 'Andersen'
+        },
+        methods: {
+            getFullName: function() {
+                return this.firstName + ' ' + this.lastName;
+            },
+            getFullNameTwoMethod: function(first, last) {
+                return first + ' ' + last;
+            },
+            getFullNameThreeMethod: function(first, last) {
+                return {
+                    name: first + ' ' + last
+                }
+            }
+
         }
     });
 </script>
