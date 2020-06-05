@@ -24,6 +24,9 @@
         </div>
         <button v-on:click.once="showDialog">Click Here!</button>
         <a href="http://google.com" v-on:click.prevent="showDialog" target="_blank">Or here</a>
+        <input type="text" v-on:keyup.enter.space="pressedEnter">
+        <input type="text" v-on:keyup.shift.enter="myListener">
+        <button v-on:click.meta="myButtonListener">Click Here</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -55,6 +58,15 @@
             },
             showDialog: function() {
                 alert('Hello World');
+            },
+            pressedEnter: function(){
+                alert("your pressed the Enter key");
+            },
+            myListener: function(){
+                alert("your pressed the Shift + Enter key");
+            },
+            myButtonListener: function(){
+                alert("your click the button");
             }
 
         }
