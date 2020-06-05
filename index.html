@@ -18,7 +18,7 @@
         <a v-bind:href="blogUrl"> Visit my blog </a>
         <div v-bind:title="message">Mouse hover</div>
         <div v-bind:title="firstName + ' ' + lastName">My Name</div>
-        <button v-on:click="clickedButton">Click </button>
+        <button v-on:click="clickedButton('Hello World', $event)">Click </button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -45,8 +45,8 @@
                     name: first + ' ' + last
                 }
             },
-            clickedButton: function() {
-                alert('You click the button');
+            clickedButton: function(message, event) {
+                alert(message);
             }
 
         }
