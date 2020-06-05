@@ -19,6 +19,11 @@
         <div v-bind:title="message">Mouse hover</div>
         <div v-bind:title="firstName + ' ' + lastName">My Name</div>
         <button v-on:click="clickedButton('Hello World', $event)">Click </button>
+        <div v-on:click="showDialog">
+            <button v-on:click.stop="showDialog">Click Here!</button>
+        </div>
+        <button v-on:click.once="showDialog">Click Here!</button>
+        <a href="http://google.com" v-on:click.prevent="showDialog" target="_blank">Or here</a>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -47,6 +52,9 @@
             },
             clickedButton: function(message, event) {
                 alert(message);
+            },
+            showDialog: function() {
+                alert('Hello World');
             }
 
         }
