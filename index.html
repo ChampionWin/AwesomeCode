@@ -17,6 +17,8 @@
         <h1>{{ getFullNameThreeMethod(firstName, lastName).name }}</h1>
         <a v-bind:href="blogUrl"> Visit my blog </a>
         <div v-bind:title="message">Mouse hover</div>
+        <div v-bind:title="firstName + ' ' + lastName">My Name</div>
+        <button v-on:click="clickedButton">Click </button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -27,8 +29,8 @@
             message: "Hello World",
             age: 27,
             name: 'Bo Andresen',
-            firstName: 'Bo',
-            lastName: 'Andersen',
+            firstName: 'Champion',
+            lastName: 'Okay',
             blogUrl: 'http://codingexplained.com'
         },
         methods: {
@@ -42,6 +44,9 @@
                 return {
                     name: first + ' ' + last
                 }
+            },
+            clickedButton: function() {
+                alert('You click the button');
             }
 
         }
