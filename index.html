@@ -27,6 +27,21 @@
         <input type="text" v-on:keyup.enter.space="pressedEnter">
         <input type="text" v-on:keyup.shift.enter="myListener">
         <button v-on:click.meta="myButtonListener">Click Here</button>
+        <br><br>
+        <input type="text" v-on:keyup="nameKeyup">
+        Output: {{ inputName }}
+        <br><br>
+        <input type="text" v-on:keyup.ctrl.enter="nameKeyup">
+        Output: {{ inputName }}
+        <br><br>
+        <form action="" method="GET" v-on:submit.prevent>
+            <input type="submit" value="Submit">
+        </form>
+        <input type="text" v-model.trim="inputText">
+        <p>You entered: {{ inputText }} </p>
+        <div v-html="html"></div>
+        <h1 v-once> {{movieTitle}} </h1>
+        <button v-on:click="movieTitle = 'The Matix Reloaded'">Change Movie Title</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -37,9 +52,13 @@
             message: "Hello World",
             age: 27,
             name: 'Bo Andresen',
+            inputName: '',
+            inputText: '',
             firstName: 'Champion',
             lastName: 'Okay',
-            blogUrl: 'http://codingexplained.com'
+            blogUrl: 'http://codingexplained.com',
+            html:'<h2>World</h2>',
+            movieTitle: 'The Matrix',
         },
         methods: {
             getFullName: function() {
@@ -67,7 +86,11 @@
             },
             myButtonListener: function(){
                 alert("your click the button");
+            },
+            nameKeyup: function(event) {
+                this.inputName = event.target.value;
             }
+
 
         }
     });
