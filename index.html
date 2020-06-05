@@ -15,6 +15,7 @@
         <h1>{{ getFullName() }}</h1>
         <h1>{{ getFullNameTwoMethod(firstName, lastName) }}</h1>
         <h1>{{ getFullNameThreeMethod(firstName, lastName).name }}</h1>
+        <a v-bind:href="blogUrl"> Visit my blog </a>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -26,7 +27,8 @@
             age: 27,
             name: 'Bo Andresen',
             firstName: 'Bo',
-            lastName: 'Andersen'
+            lastName: 'Andersen',
+            blogUrl: 'http://codingexplained.com'
         },
         methods: {
             getFullName: function() {
