@@ -16,6 +16,10 @@
             <p>Special Offer!</p>
             <p>Looks like we have tons of products in stock... Save 20% if you offer now!</p>
         </template>
+        <!-- Showing and Hiding elements -->
+        <p v-show="isNinja">Invisible like a ninja!</p>
+        <p v-show="!isNinja">Here I am!</p>
+        <button v-on:click="isNinja = !isNinja">Toggle Ninja Skills</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -23,8 +27,9 @@
     new Vue({
         el: "#app",
         data: {
-            itemsInStock: 51
-
+            itemsInStock: 51,
+            isNinja: true,
+            message: 'Hello World'
         },
 
     });
