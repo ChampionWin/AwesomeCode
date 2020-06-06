@@ -53,6 +53,12 @@
               {{propertyName}}:  {{ value }} ({{ index }})
             </li>
         </ui>
+        <!-- looping through number ranges -->
+        <ul>
+            <li v-for="(n, index) in 10">
+                {{ n }} * {{ index }} = {{n * index}}
+            </li>
+        </ul>
     </div>
 </body>
 <script src="vue.js"></script>
