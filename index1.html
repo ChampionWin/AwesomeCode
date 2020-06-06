@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
 </head>
 
 <body>
@@ -24,21 +24,53 @@
         <!-- Hiding elements untill the Vue instance is ready -->
         <h1>V-cloak example</h1>
         <h1 v-cloak>{{ message }}</h1>
+        <h1>Movies</h1>
+        <!-- Looping through array -->
+        <ui>
+            <li v-for="title in movieTitles">{{title}}</li>
+        </ui>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="employee in employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.title}}</td>
+                    <td>{{companyName}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 <script src="vue.js"></script>
 <script type="text/javascript">
-setTimeout(() => {
+    // setTimeout(() => {
+    //     new Vue({
+    //         el: "#app",
+    //         data: {
+    //             itemsInStock: 51,
+    //             isNinja: true,
+    //             message: 'Hello World'
+    //         },
+    //     });
+    // }, (5000));
     new Vue({
-        el: "#app",
+        el: '#app',
         data: {
-            itemsInStock: 51,
-            isNinja: true,
-            message: 'Hello World'
-        },
-
-    });
-}, (5000));
+            movieTitles: ['The matrix', 'The matrix: Reloaded', 'The matrix Revolution'],
+            employees: [
+                { name: 'Abby', title: 'Accountant' },
+                { name: 'Andy', title: 'Marketing Manager' },
+                { name: 'Brandon', title: 'Vue.js Expert' },
+            ],
+            companyName: 'VueX Ltd'
+        }
+    })
 
 </script>
 
