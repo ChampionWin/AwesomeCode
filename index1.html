@@ -35,16 +35,24 @@
                     <th>Name</th>
                     <th>Title</th>
                     <th>Company</th>
+                    <th>Index</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="employee in employees">
-                    <td>{{employee.name}}</td>
-                    <td>{{employee.title}}</td>
-                    <td>{{companyName}}</td>
+                <tr v-for="(employee, index) in employees">
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.title }}</td>
+                    <td>{{ companyName }}</td>
+                    <td>{{ index }}</td>
                 </tr>
             </tbody>
         </table>
+        <!-- Looping through object properties -->
+        <ui>
+            <li v-for="(value, propertyName, index) in person">
+              {{propertyName}}:  {{ value }} ({{ index }})
+            </li>
+        </ui>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -68,7 +76,12 @@
                 { name: 'Andy', title: 'Marketing Manager' },
                 { name: 'Brandon', title: 'Vue.js Expert' },
             ],
-            companyName: 'VueX Ltd'
+            companyName: 'VueX Ltd',
+            person: {
+                firstName: 'Champion',
+                lastName: 'DEv',
+                age: 27
+            }
         }
     })
 
