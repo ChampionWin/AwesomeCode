@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
 </head>
 
 <body>
@@ -20,10 +21,14 @@
         <p v-show="isNinja">Invisible like a ninja!</p>
         <p v-show="!isNinja">Here I am!</p>
         <button v-on:click="isNinja = !isNinja">Toggle Ninja Skills</button>
+        <!-- Hiding elements untill the Vue instance is ready -->
+        <h1>V-cloak example</h1>
+        <h1 v-cloak>{{ message }}</h1>
     </div>
 </body>
 <script src="vue.js"></script>
 <script type="text/javascript">
+setTimeout(() => {
     new Vue({
         el: "#app",
         data: {
@@ -33,6 +38,8 @@
         },
 
     });
+}, (5000));
+
 </script>
 
 </html>
