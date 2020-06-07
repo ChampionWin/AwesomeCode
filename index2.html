@@ -13,6 +13,7 @@
         <p>{{ counter }}</p>
         <p>{{ fullName }}</p>
         <button v-on:click="counter++">Increase Counter</button>
+        <button v-on:click="changeName">Change Name</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -24,9 +25,15 @@
             firstName: 'Champion',
             lastName: 'Dev',
         },
+        methods : {
+            changeName: function() {
+                this.firstName = 'Mark';
+                this.lastName = " Gonzales";
+            }
+        },
         computed: {
             fullName: function() {
-                alert("Assembling full name ...");
+                // alert("Assembling full name ...");
                 return this.firstName + ' ' + this.lastName;
             }
         }
