@@ -30,6 +30,8 @@
             <li v-for="movie in formattedMovies">{{ movie }}</li>
         </ol>
         <button v-on:click="addMovie">Add Movie</button>
+        <!-- filter -->
+        <h1>{{ message | uppercase(true)}}</h1>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -44,10 +46,24 @@
             results: [],
             isSearching: false,
             movies: [
-                { name: 'The matrix', year: 1999},
-                { name: 'The matrix Reloaded', year: 2003},
-                { name: 'The matrix Revolution', year: 2019},
-            ]
+                { name: 'The matrix', year: 1999 },
+                { name: 'The matrix Reloaded', year: 2003 },
+                { name: 'The matrix Revolution', year: 2019 },
+            ],
+            message: 'Hello World',
+        },
+        filters: {
+            uppercase: function (value, onlyFirstCharacter) {
+                if (!value) {
+                    return '';
+                }
+                value = value.toString();
+                if (onlyFirstCharacter) {
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                } else {
+                    return value.toUpperCase();
+                }
+            }
         },
         watch: {
             searchQuery: function (query) {
@@ -58,7 +74,7 @@
                     this.isSearching = false;
                 }, 500);
             },
-            movies: function(movies) {
+            movies: function (movies) {
                 var newMovie = movies[movies.length - 1];
                 alert(newMovie.name + ' from' + newMovie.year + 'was just added');
             }
@@ -71,7 +87,7 @@
             changeNameSetter: function () {
                 this.fullName = 'Mark gonzales'
             },
-            addMovie: function() {
+            addMovie: function () {
                 this.movies.push({
                     name: 'The Fast',
                     year: 2001
@@ -91,8 +107,8 @@
                     this.lastName = parts[parts.length - 1];
                 }
             },
-            formattedMovies: function() {
-                return this.movies.map(function(movie) {
+            formattedMovies: function () {
+                return this.movies.map(function (movie) {
                     return movie.name + '(' + movie.year + ')';
                 });
             }
