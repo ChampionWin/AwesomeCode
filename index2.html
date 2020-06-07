@@ -32,6 +32,9 @@
         <button v-on:click="addMovie">Add Movie</button>
         <!-- filter -->
         <h1>{{ message | uppercase(true)}}</h1>
+        <!-- exercise -->
+        <p v-bind:title="message | uwfirst">{{ message }}</p>
+        <p>{{ message | uwfirst | removeSpaces }}</p>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -50,7 +53,7 @@
                 { name: 'The matrix Reloaded', year: 2003 },
                 { name: 'The matrix Revolution', year: 2019 },
             ],
-            message: 'Hello World',
+            message: 'hello world',
         },
         filters: {
             uppercase: function (value, onlyFirstCharacter) {
@@ -63,7 +66,25 @@
                 } else {
                     return value.toUpperCase();
                 }
+            },
+            uwfirst: function(value) {
+                if(!value) {
+                    return '';
+                }
+                var parts = value.toString().split(' ');
+                var uppercaseWords =  parts.map(function(word){
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                });
+                return uppercaseWords.join(' ');
+            },
+            removeSpaces: function(value) {
+                if (!value) {
+                    return '';
+                }
+                return value.toString().replace(/ /g, '');
+
             }
+
         },
         watch: {
             searchQuery: function (query) {
