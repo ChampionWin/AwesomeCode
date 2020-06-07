@@ -25,6 +25,11 @@
                 <li v-for="result in results">{{ result }}</li>
             </ol>
         </div>
+        <!-- exercise -->
+        <ol>
+            <li v-for="movie in formattedMovies">{{ movie }}</li>
+        </ol>
+        <button v-on:click="addMovie">Add Movie</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -37,7 +42,12 @@
             lastName: 'Dev',
             searchQuery: '',
             results: [],
-            isSearching: false
+            isSearching: false,
+            movies: [
+                { name: 'The matrix', year: 1999},
+                { name: 'The matrix Reloaded', year: 2003},
+                { name: 'The matrix Revolution', year: 2019},
+            ]
         },
         watch: {
             searchQuery: function (query) {
@@ -47,6 +57,10 @@
                     vm.results = ['JavaScript', 'PHP', 'MySQL']
                     this.isSearching = false;
                 }, 500);
+            },
+            movies: function(movies) {
+                var newMovie = movies[movies.length - 1];
+                alert(newMovie.name + ' from' + newMovie.year + 'was just added');
             }
         },
         methods: {
@@ -56,6 +70,12 @@
             },
             changeNameSetter: function () {
                 this.fullName = 'Mark gonzales'
+            },
+            addMovie: function() {
+                this.movies.push({
+                    name: 'The Fast',
+                    year: 2001
+                })
             }
         },
         computed: {
@@ -70,6 +90,11 @@
                     this.firstName = parts[0];
                     this.lastName = parts[parts.length - 1];
                 }
+            },
+            formattedMovies: function() {
+                return this.movies.map(function(movie) {
+                    return movie.name + '(' + movie.year + ')';
+                });
             }
         }
     });
