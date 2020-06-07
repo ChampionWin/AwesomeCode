@@ -73,6 +73,20 @@
             <li v-for="n in numbers">{{ n }}</li>
         </ui>
         <button v-on:click="changeNumber">Change Number</button>
+        <br><br>
+        <!-- exercies -->
+        <input type="password" placeholder="Enter your name" v-model="password">
+        <p v-if="password.length > 8">Awesome! Your password is longer than 8 characters</p>
+        <p v-else-if=" password.length > 0">Please enter a longer password</p>
+        <p v-else>Please enter a password</p>
+        <!-- <ol>
+            <li v-for="category in categories">
+                {{ category.name }}
+                <ui>
+                    <li v-for="sub in category.sub">{{ sub }}</li>
+                </ui>
+            </li>
+        </ol> -->
     </div>
 </body>
 <script src="vue.js"></script>
@@ -107,7 +121,13 @@
                 {id:2, name: 'Abby'},
                 {id:3, name: 'teresa'},
             ],
-            numbers: [1, 2, 3, 4, 5]
+            password: '',
+            numbers: [1, 2, 3, 4, 5],
+            categories: [
+                {name: 'JavaScript', sub: ['Vue.js', 'React', 'Angular2']},
+                {name: 'Database', sub: ['MySQL', 'PostgreSQL', 'MariaDB']},
+                {name: 'OS', sub: ['macOS', 'linux', 'Windows']},
+            ]
         },
         methods: {
             addNewPerson: function() {
