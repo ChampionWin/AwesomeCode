@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css" media="screen" /> -->
 </head>
 
 <body>
@@ -35,6 +35,9 @@
         <!-- exercise -->
         <p v-bind:title="message | uwfirst">{{ message }}</p>
         <p>{{ message | uwfirst | removeSpaces }}</p>
+        <div style="width: 200px; height: 200px;" v-bind:style="{ 'background-color': color }"></div>
+        <button v-on:click="changeColor">Change Color</button>
+        <div v-bind:style="[styles, moreStyles]"></div>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -54,6 +57,10 @@
                 { name: 'The matrix Revolution', year: 2019 },
             ],
             message: 'hello world',
+            color: 'blue',
+            moreStyles: {
+                'border-radius': '6px'
+            }
         },
         filters: {
             uppercase: function (value, onlyFirstCharacter) {
@@ -113,6 +120,13 @@
                     name: 'The Fast',
                     year: 2001
                 })
+            },
+            changeColor: function() {
+                if (this.color == 'blue') {
+                    this.color = 'red';
+                } else {
+                    this.color = 'blue';
+                }
             }
         },
         computed: {
@@ -132,6 +146,15 @@
                 return this.movies.map(function (movie) {
                     return movie.name + '(' + movie.year + ')';
                 });
+            },
+            styles: function() {
+                var height =  200;
+
+                return {
+                    'background-color': 'blue',
+                    width: (height / 2)+ 'px',
+                    height: height + 'px'
+                }
             }
         }
     });
