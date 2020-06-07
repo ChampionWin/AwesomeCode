@@ -14,6 +14,17 @@
         <p>{{ fullName }}</p>
         <button v-on:click="counter++">Increase Counter</button>
         <button v-on:click="changeName">Change Name</button>
+        <button v-on:click="changeNameSetter">Change name (setter)</button>
+        <!-- watchers -->
+        <br><br>
+        <input type="text" v-model="searchQuery">
+
+        <p v-if="isSearching">Searching...</p>
+        <div>
+            <ol>
+                <li v-for="result in results">{{ result }}</li>
+            </ol>
+        </div>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -24,17 +35,41 @@
             counter: 1,
             firstName: 'Champion',
             lastName: 'Dev',
+            searchQuery: '',
+            results: [],
+            isSearching: false
         },
-        methods : {
-            changeName: function() {
+        watch: {
+            searchQuery: function (query) {
+                this.isSearching = true;
+                var vm = this;
+                setTimeout(() => {
+                    vm.results = ['JavaScript', 'PHP', 'MySQL']
+                    this.isSearching = false;
+                }, 500);
+            }
+        },
+        methods: {
+            changeName: function () {
                 this.firstName = 'Mark';
                 this.lastName = " Gonzales";
+            },
+            changeNameSetter: function () {
+                this.fullName = 'Mark gonzales'
             }
         },
         computed: {
-            fullName: function() {
-                // alert("Assembling full name ...");
-                return this.firstName + ' ' + this.lastName;
+            fullName: {
+                get: function () {
+                    // alert("Assembling full name");
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set: function () {
+                    alert("Setting new name :" + newValue);
+                    var parts = newValue.split(' ');
+                    this.firstName = parts[0];
+                    this.lastName = parts[parts.length - 1];
+                }
             }
         }
     });
