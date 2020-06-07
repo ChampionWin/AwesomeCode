@@ -79,14 +79,14 @@
         <p v-if="password.length > 8">Awesome! Your password is longer than 8 characters</p>
         <p v-else-if=" password.length > 0">Please enter a longer password</p>
         <p v-else>Please enter a password</p>
-        <!-- <ol>
+        <ol>
             <li v-for="category in categories">
                 {{ category.name }}
-                <ui>
+                <ul>
                     <li v-for="sub in category.sub">{{ sub }}</li>
-                </ui>
+                </ul>
             </li>
-        </ol> -->
+        </ol>
     </div>
 </body>
 <script src="vue.js"></script>
