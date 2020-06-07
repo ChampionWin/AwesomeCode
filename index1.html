@@ -68,6 +68,11 @@
         </ui>
         <button v-on:click="addNewPerson()">Add Person</button>
         <button v-on:click="shuffle()">Shuffle</button>
+        <!-- Array change detection -->
+        <ui>
+            <li v-for="n in numbers">{{ n }}</li>
+        </ui>
+        <button v-on:click="changeNumber">Change Number</button>
     </div>
 </body>
 <script src="vue.js"></script>
@@ -101,7 +106,8 @@
                 {id:1, name: 'Andy'},
                 {id:2, name: 'Abby'},
                 {id:3, name: 'teresa'},
-            ]
+            ],
+            numbers: [1, 2, 3, 4, 5]
         },
         methods: {
             addNewPerson: function() {
@@ -126,6 +132,10 @@
                     newArr[j] = temp;
                 }
                 return newArr;
+            },
+            changeNumber: function() {
+                Vue.set(this.numbers, 1, 10);
+                alert(this.numbers[1]);
             }
         }
     })
