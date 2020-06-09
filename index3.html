@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="vm1">
+        <h1>{{ name }}</h1>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var vm1 = new Vue({
+        el: "#vm1",
+        data: {
+            name: 'Vue Instance #1'
+        },
+    });
+    setTimeout(() => {
+        vm1.name = 'Hello from the other side';
+    }, 2000);
+</script>
+
+</html>
