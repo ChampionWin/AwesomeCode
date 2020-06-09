@@ -13,7 +13,11 @@
     <div id="vm2">
         <button @click="showName">Show name</button>
     </div>
-    <div id="app"></div>
+    <br><br>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <button @click="showMessage">Click</button>
+    </div>
 </body>
 <script src="vue.js"></script>
 <script type="text/javascript">
@@ -27,20 +31,24 @@
     var vm2 = new Vue({
         el: '#vm2',
         methods: {
-            showName: function() {
+            showName: function () {
                 alert("The name of the other Vue instance is: " + vm1.name)
             }
         }
     });
-    var data = {
-        message: 'Hello World!',
-        x: 1,
-        y: 2
-    };
+    // var data = {
+    //     message: 'Hello World!',
+    //     x: 1,
+    //     y: 2
+    // };
 
     var vm = new Vue({
         el: '#app',
-        data: data,
+        data: {
+            // message: 'Hello World!',
+            x: 1,
+            y: 2
+        },
         methods: {
             showMessage: function () {
                 alert(this.message);
@@ -54,10 +62,7 @@
     });
 
     console.log(vm);
-    console.log(vm.$data.message);
-    console.log(vm.message);
-    console.log(data.message === vm.message);
-    console.log(data === vm.$data);
+    vm.message = 'hello world';
     setTimeout(() => {
         vm1.name = 'Hello from the other side';
     }, 2000);
